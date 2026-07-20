@@ -7,8 +7,23 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <h1 style="padding: var(--space-lg); background: var(--color-bg-soft);">
-    Snidge palette check: <span style="color: var(--color-accent);">coral</span> on blush
-  </h1>
+  <header class="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <span class="blob blob-coral-1"></span>
+      <span class="blob blob-blush"></span>
+      <span class="blob blob-coral-2"></span>
+    </div>
+
+    <div class="hero-content">
+      <img src="assets/logo.png" alt="Snidge" class="hero-logo">
+      <h1 class="hero-tagline">A fast, fuss free colour picker for designers.</h1>
+
+      <video class="hero-demo" autoplay loop muted playsinline>
+        <source src="assets/demo.mp4" type="video/mp4">
+      </video>
+
+      <button class="btn-primary" id="download-btn">Download</button>
+    </div>
+  </header>
 </body>
 </html>
