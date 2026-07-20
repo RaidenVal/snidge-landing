@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Snidge — A fast, fuss free colour picker for designers</title>
+  <title>Snidge: A fast, fuss free colour picker for designers</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -18,12 +18,50 @@
       <img src="assets/logo.png" alt="Snidge" class="hero-logo">
       <h1 class="hero-tagline">A fast, fuss free colour picker for designers.</h1>
 
+      <div class="download" id="download">
+        <a class="btn-primary" href="#" data-download="windows">Download for Windows</a>
+        <a class="btn-primary" href="#" data-download="mac">Download for macOS</a>
+      </div>
+
       <video class="hero-demo" autoplay loop muted playsinline>
         <source src="assets/demo.mp4" type="video/mp4">
       </video>
-
-      <button class="btn-primary" id="download-btn">Download</button>
     </div>
   </header>
+
+  <section class="features">
+    <div class="feature-card">
+      <span class="feature-icon palette-icon" aria-hidden="true">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </span>
+      <h3>Palette</h3>
+      <p>Pick one colour, get a full radial palette.</p>
+    </div>
+
+    <div class="feature-card">
+      <span class="feature-icon" aria-hidden="true">
+        <span class="gradient-bar"></span>
+      </span>
+      <h3>Gradient</h3>
+      <p>Blend two colours into a smooth gradient with 4, 9, or 16 swatches.</p>
+    </div>
+
+    <div class="feature-card">
+      <span class="feature-icon" aria-hidden="true">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="5" y="11" width="14" height="9" rx="2"></rect>
+          <path d="M8 11V7a4 4 0 0 1 8 0v4"></path>
+        </svg>
+      </span>
+      <h3>Private by design</h3>
+      <p>Runs entirely on your device. No analytics, no telemetry.</p>
+    </div>
+  </section>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
