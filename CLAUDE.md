@@ -5,12 +5,31 @@ Plain HTML/CSS/vanilla JS, no framework, deploy target is Vercel.
 
 ## Where things stand
 
-- Repo is local only (`~/dev/snidge-landing`), not pushed to GitHub yet.
-  Pushing/connecting Vercel is something the user wants to do manually,
-  not something to automate.
-- No custom domain yet. Plan: ship a free `*.vercel.app` deploy, post on
-  X with a packaged Mac build to gauge interest before spending money on
-  `snidge.app` or Apple Developer signing ($99/yr).
+- **Live and shipped.** GitHub: `https://github.com/RaidenVal/snidge-landing`
+  (pushed, `main` tracks `origin/main`). Deployed on Vercel at
+  `https://snidge-landing.vercel.app`, project linked to the GitHub repo
+  so every push to `main` auto-deploys. No custom domain yet, on purpose
+  (see below).
+- This machine had zero GitHub/Vercel auth set up (fresh Mac). Got there
+  by installing `gh` (`brew install gh`, then user ran `gh auth login`
+  themselves) and the `vercel` CLI (`npm install -g vercel`, user ran
+  `vercel login` themselves). Both are browser OAuth logins — that step
+  always has to be the user, not something to do on their behalf.
+- No custom domain yet, still deliberate: shipped the free `*.vercel.app`
+  URL and posted about Snidge on Threads and X to gauge interest before
+  spending on `snidge.app` or Apple Developer signing ($99/yr). Threads
+  was the lead platform (better organic reach for a new account with no
+  followers yet); X got the same post as a secondary channel.
+- For the social posts: made a short trimmed demo clip in two formats,
+  saved in `~/dev/snidge properties/` (NOT in this repo — these are
+  marketing assets, not site assets): `snidge_short_demo_threads.mp4`
+  (1080px wide, ~224KB) and `snidge_short_demo.gif` (640px wide, ~647KB,
+  palette-generated with ffmpeg for quality). Recommended the mp4 over
+  the gif for posting — smaller file and GIF's 256-colour limit risks
+  visible banding on exactly the kind of smooth colour/gradient UI this
+  product shows off. Had to `brew install ffmpeg` for this (wasn't
+  installed; the earlier `demo.mp4` compression used the system's
+  built-in `avconvert` instead, see below).
 - Page currently has: Hero (logo + tagline + download buttons + demo
   video), a three-card feature section, and a footer (Feedback link →
   Tally placeholder, GitHub link, copyright).
@@ -72,10 +91,11 @@ Plain HTML/CSS/vanilla JS, no framework, deploy target is Vercel.
 
 ## Not done yet / likely next steps
 
-- User confirmed footer, tagline styling, spacing, and demo video all
-  look good as of the last session. Further designer feedback may still
-  come in (colour/spacing tweaks) — treat those the same way: small
-  step, explain, verify, commit separately from unrelated changes.
+- Site itself is feature complete against the original spec (Hero,
+  download CTAs, features, footer, demo video). Further designer
+  feedback may still come in (colour/spacing tweaks) — treat those the
+  same way: small step, explain, verify, commit separately from
+  unrelated changes, push when the user confirms.
 - Mobile responsiveness: breakpoints exist at 700px/600px. A true
   narrow-phone-width automated check isn't reliable on this machine
   (Chrome's CLI headless screenshot mode ignores `--window-size` below
@@ -83,9 +103,11 @@ Plain HTML/CSS/vanilla JS, no framework, deploy target is Vercel.
   claude-in-chrome extension for this project after some flaky/
   contradictory results) — verify by asking the user to check
   DevTools' device toolbar themselves, don't try to automate it again.
-- GitHub repo creation + push (user will do manually).
-- Vercel connection + domain decision (deferred until there's signal
-  from the X post).
+- Domain (`snidge.app`) and Apple Developer signing ($99/yr) are both
+  deferred until there's real signal from the Threads/X posts. Don't
+  suggest buying either until the user brings up traction.
+- Watch for feedback coming in via the Tally form or GitHub — that's
+  the actual signal the domain/signing decision hinges on.
 
 ## Related: the actual Snidge app repo (`~/dev/snidge`)
 
