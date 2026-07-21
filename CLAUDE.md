@@ -12,10 +12,19 @@ Plain HTML/CSS/vanilla JS, no framework, deploy target is Vercel.
   X with a packaged Mac build to gauge interest before spending money on
   `snidge.app` or Apple Developer signing ($99/yr).
 - Page currently has: Hero (logo + tagline + download buttons + demo
-  video) and a three-card feature section. No footer section yet
-  (Feedback link / GitHub link / copyright from the original spec).
-- `assets/demo.mp4` does not exist yet — the empty white box under the
-  download buttons is expected until the user drops in a real recording.
+  video), a three-card feature section, and a footer (Feedback link →
+  Tally placeholder, GitHub link, copyright).
+- `assets/demo.mp4` is in place — a real recording, converted from `.mov`
+  and compressed with the system's built-in `avconvert` (no ffmpeg
+  installed on this machine) to 1280x720, ~6MB. If it needs re-doing:
+  `avconvert --source <in> --preset Preset1280x720 --output <out> --replace`.
+- Hero tagline ("A fast, fuss free colour picker for designers.") is
+  styled per the designer partner's feedback: the whole line uses a
+  lighter coral tint (`--color-accent-soft: #f7a09a`, reused from the
+  Palette icon's tint steps) and "designers" is wrapped in
+  `.hero-tagline-accent` at full `--color-accent` (#f3776e, same as the
+  download buttons) so it reads as the deepest word. "for" and
+  "designers" are joined with `&nbsp;` so they never break across lines.
 
 ## Key decisions made along the way
 
@@ -63,12 +72,29 @@ Plain HTML/CSS/vanilla JS, no framework, deploy target is Vercel.
 
 ## Not done yet / likely next steps
 
-- Footer section (Feedback link → Tally placeholder, GitHub link,
-  copyright).
-- Real `assets/demo.mp4` and final logo/icon refinement from the
-  designer partner if it changes again.
-- Mobile responsiveness check (breakpoints exist at 700px/600px but
-  haven't been eyeballed carefully on an actual small screen).
+- User confirmed footer, tagline styling, spacing, and demo video all
+  look good as of the last session. Further designer feedback may still
+  come in (colour/spacing tweaks) — treat those the same way: small
+  step, explain, verify, commit separately from unrelated changes.
+- Mobile responsiveness: breakpoints exist at 700px/600px. A true
+  narrow-phone-width automated check isn't reliable on this machine
+  (Chrome's CLI headless screenshot mode ignores `--window-size` below
+  its ~500px minimum window size, and the user asked not to use the
+  claude-in-chrome extension for this project after some flaky/
+  contradictory results) — verify by asking the user to check
+  DevTools' device toolbar themselves, don't try to automate it again.
 - GitHub repo creation + push (user will do manually).
 - Vercel connection + domain decision (deferred until there's signal
   from the X post).
+
+## Related: the actual Snidge app repo (`~/dev/snidge`)
+
+Separate repo, not this one, but the same user/product. Fixed one real
+bug there in passing: on macOS, `npm run dev` (raw Electron, not a
+packaged .app) always showed Electron's default Dock icon, because
+`BrowserWindow`'s `icon` option has no effect on the Dock on macOS (only
+Windows/Linux). Fixed with an explicit `app.dock?.setIcon(...)` call
+gated to `process.platform === 'darwin' && is.dev` in
+`src/main/index.ts`'s `app.whenReady()` handler. Packaged builds were
+never affected (electron-builder already generates the icon correctly
+from `build/icon.png`).
