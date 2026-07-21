@@ -4,7 +4,8 @@
   /* 品牌色：和 Snidge app 本体保持一致 */
   --color-bg: #ffffff;
   --color-bg-soft: #feeff1; /* blush */
-  --color-accent: #f3776e; /* coral */
+  --color-accent: #f3776e; /* coral, same as download buttons */
+  --color-accent-soft: #f7a09a; /* lighter coral tint, so designers reads as the deepest word */
   --color-text: #4a4b52; /* 比纯黑柔和，用于大标题 */
   --color-text-muted: #86878a; /* app 原生 text-dark，小字/说明文字用 */
 
@@ -106,6 +107,11 @@ h1, h2, h3 {
   font-size: 2.5rem;
   max-width: 640px;
   margin: 0 auto var(--space-lg);
+  color: var(--color-accent-soft);
+}
+
+.hero-tagline-accent {
+  color: var(--color-accent);
 }
 
 .hero-demo {
