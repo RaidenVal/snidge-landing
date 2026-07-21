@@ -208,6 +208,26 @@ h1, h2, h3 {
   background: linear-gradient(90deg, var(--color-accent), var(--color-bg-soft));
 }
 
+.site-footer {
+  text-align: center;
+  padding: var(--space-lg) var(--space-md);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.footer-link {
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  color: var(--color-accent);
+}
+
+.footer-sep {
+  margin: 0 var(--space-xs);
+}
+
 @media (max-width: 700px) {
   .features {
     flex-direction: column;
